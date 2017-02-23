@@ -1,0 +1,102 @@
+*{
+	box-sizing: border-box;
+}
+
+img{
+	max-width: 100%;
+	border-radius: 3%;
+}
+
+
+body{
+	margin: 0;
+	font-family: "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+button{
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+#header{
+	margin: 0;
+	border: 0;
+	padding: 1vh;
+	position: fixed;
+	width: 100%;
+	background: #343638;
+	z-index: 100;
+}
+
+#inputText{
+	width: 30%;
+	height: 30px;
+	border-radius: 3%;
+}
+
+
+
+#searchStyle i{
+	color: white;
+	transform: translateY(25%);
+}
+
+#searchStyle{
+	position: relative;
+	left: 10%;
+}
+
+#mainContainer{
+	margin: 0 auto;
+	width: 80%;
+	padding-top: 10vh;
+}
+
+#profileContainer{
+	display: inline-block;
+	vertical-align: top;
+
+	max-width: 30%;
+}
+#profileContainer h2{
+	text-decoration: none;
+	color: #4f4f4f;
+}
+
+.companyLink{
+	text-decoration: none;
+	color:#4f4f4f;
+}
+
+#repoContainer{
+	display: inline-block;
+	max-width: 69%;
+}
+
+#repoContainer .hasIcon{
+	display: inline-block;
+}
+
+#repoContainer a{
+	text-decoration: none;
+	color: #6696d6;
+}
+
+#repoContainer .repoBox{
+	color: #4f4f4f;
+}
+
+.hasIcon i{
+	transform: translateY(25%);
+}
+
+#repoList li{
+    list-style-type: none;
+}
+
+.dot i{
+	color: green;
+}
+
