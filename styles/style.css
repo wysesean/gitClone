@@ -36,7 +36,9 @@ button{
 	border-radius: 3%;
 }
 
-
+.date{
+	margin-left:10px;
+}
 
 #searchStyle i{
 	color: white;

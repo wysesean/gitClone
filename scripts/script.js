@@ -28,8 +28,8 @@ function setRepoHTML(htmlObj){
 			repoHTML += 	'<div class=extraInfo>'
 			repoHTML +=			(htmlObj[i].language?'<p class="hasIcon dot" id="language"><i class="material-icons">fiber_manual_record</i>'+htmlObj[i].language+'</p>':'')
 			repoHTML += 		(htmlObj[i].stargazers_count?'<p class="hasIcon" id="stars"><i class="material-icons">&#xE838;</i>'+htmlObj[i].stargazers_count+'</p>':'')
-			repoHTML +=			(htmlObj[i].forks_count?'<p class="hasIcon" id="forks"><i class="material-icons">shuffle</i>'+htmlObj[i].forks_count+'</p>':'')
-			repoHTML +=			'<p class="date">'+getUpdatedAt(htmlObj[i].updated_at)+'</p>'
+			repoHTML +=			(htmlObj[i].forks_count?'<p class="hasIcon" id="forks"><i class="material-icons">shuffle</i>'+htmlObj[i].forks_count+'      '+'        </p>':'')
+			repoHTML +=			'<p class="date hasIcon">'+getUpdatedAt(htmlObj[i].updated_at)+'</p>'
 			repoHTML +=		'</div>'
 			repoHTML += '</li><hr>'
 		}
