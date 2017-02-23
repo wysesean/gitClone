@@ -9,7 +9,7 @@ function setProfileHTML(profileObj){
 			promiseHTML +=		'<button id="followButton"> Follow </button>'
 			promiseHTML +=		'<a href="#" onclick=\"alert(\''+profileObj.name+' has been reported to the internet police.\');\">Block or report user</a>'
 			promiseHTML +=		'<hr>'
-			promiseHTML +=		(profileObj.company ? '<div class="hasIcon" id="company"><i class="material-icons">perm_identity</i><a class="companyLink" href="https://github.com/'+profileObj.company.slice(1)+'">'+ profileObj.company + '</a></div>':'')
+			promiseHTML +=		(profileObj.company ? '<div class="hasIcon" id="company"><i class="material-icons">perm_identity</i><a class="companyink" href="https://github.com/'+profileObj.company.slice(1)+'">'+ profileObj.company + '</a></div>':'')
 			promiseHTML +=		(profileObj.location ? '<div class="hasIcon" id="location"><i class="material-icons">room</i>' + profileObj.location + '</div>' : '')
 			promiseHTML +=		(profileObj.email ? '<div class="hasIcon" id="email"><i class="material-icons">mail_outline</i><a href="'+profileObj.email+'">'+profileObj.email+'</a></div>': '')
 			promiseHTML +=		(profileObj.website ? '<div class="hasIcon" id="website"><i class="material-icons">web_asset</i>' + profileObj.blog + '</div>': '')
@@ -29,6 +29,7 @@ function setRepoHTML(htmlObj){
 			repoHTML +=			(htmlObj[i].language?'<p class="hasIcon dot" id="language"><i class="material-icons">fiber_manual_record</i>'+htmlObj[i].language+'</p>':'')
 			repoHTML += 		(htmlObj[i].stargazers_count?'<p class="hasIcon" id="stars"><i class="material-icons">&#xE838;</i>'+htmlObj[i].stargazers_count+'</p>':'')
 			repoHTML +=			(htmlObj[i].forks_count?'<p class="hasIcon" id="forks"><i class="material-icons">shuffle</i>'+htmlObj[i].forks_count+'</p>':'')
+			repoHTML +=			'<p class="date">'+getUpdatedAt(htmlObj[i].updated_at)+'</p>'
 			repoHTML +=		'</div>'
 			repoHTML += '</li><hr>'
 		}
@@ -36,6 +37,17 @@ function setRepoHTML(htmlObj){
 }
 
 function getUpdatedAt(dateString){
+	var date1 = new Date(dateString);
+	var date2 = new Date();
+	var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+	var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+	if(diffDays<30){
+		return "Updated "+ diffDays + " days ago"
+	}
+	else{
+		return "Updated on " + date1.toDateString().slice(4)
+	}
 
 }
 
@@ -51,7 +63,7 @@ function makeRepoPromise(url){
 
 function main(){
 	var defaultProfileURL = 'https://api.github.com/users/matthiasak',
-		defaultRepoURL = 'https://api.github.com/users/matthiasak/repos',
+		defaultRepoURL = 'https://api.github.com/users/matthiasak/repos?sort=updated',
 		emptyURL = 'https://api.github.com/users/',
 		inputNode = document.querySelector('#inputText')
 
@@ -61,7 +73,7 @@ function main(){
 		inputNode.addEventListener('keydown', function(e){
 			if(e.keyCode == 13){
 				makeProfilePromise(emptyURL+inputNode.value)
-				makeRepoPromise(emptyURL+inputNode.value+'/repos')
+				makeRepoPromise(emptyURL+inputNode.value+'/repos?sort=updated')
 			}
 		})
 
